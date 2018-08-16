@@ -1,0 +1,8 @@
+nfc-poll uses libnfc 1.7.1
+NFC reader: pn532_i2c:/dev/i2c-1 opened
+NFC device will poll during 30000 ms (20 pollings of 300 ms for 5 modulations)
+ISO/IEC 14443A (106 kbps) target:
+    ATQA (SENS_RES): 00  04  
+       UID (NFCID1): e6  d5  04  ed  
+      SAK (SEL_RES): 08  
+Waiting for card removing...done.
