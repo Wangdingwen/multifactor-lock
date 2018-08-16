@@ -5,7 +5,7 @@ def receive(bt_addr):
     client_socket=bluetooth.BluetoothSocket(bluetooth.RFCOMM)
     try:
         client_socket.connect((bt_addr, 1))
-        client_socket.send("R")
+        client_socket.send("N7CU6235AJLJO7CVW6L73C6PURXQ545G")
         time.sleep(1)
         data = client_socket.recv(1024).decode('utf-8')
         return data
