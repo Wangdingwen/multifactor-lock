@@ -19,4 +19,4 @@ def read_auth_all():
     else:
         return -1
 
-print(read_auth_all())
+#print(read_auth_all())

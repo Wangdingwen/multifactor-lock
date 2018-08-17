@@ -18,5 +18,5 @@ def generate(id):
     print('Scan the QR or input this code manually: ' + psecret)
     qrcode_terminal.draw(pyotp.totp.TOTP(psecret).provisioning_uri(str(id)+"@example", issuer_name="Lock"))
 
-generate(1)
-print(auth(1,input()))
+#generate(1)
+#print(auth(1,input()))
