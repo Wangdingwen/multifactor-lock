@@ -2,8 +2,6 @@
 import os, time
 import bluetooth, threading, socket
 
-
-
 def receive(bt_addr):
     client_socket=bluetooth.BluetoothSocket(bluetooth.RFCOMM)
     client_socket.connect((bt_addr, 1))
@@ -29,6 +27,5 @@ def receive_auth_all(bt_addr):
         if auth(i,data) == 0:
             return i
     return -2
-
 
 #print(receive_auth_all('98:D3:21:FC:81:0F'))

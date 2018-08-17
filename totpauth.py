@@ -10,6 +10,12 @@ def auth(id, code):
     totp = pyotp.TOTP(contents)
     return totp.verify(code)
 
+def auth_all(code):
+    for i in range(1,len([name for name in os.listdir('totpauth/') if os.path.isfile(os.path.join('totpauth/', name))])):
+        if auth(i, code):
+            return i
+    return -2
+
 def generate(id):
     psecret = pyotp.random_base32()
     file_path = open('totpauth/' + str(id) + '.txt','a')

@@ -12,4 +12,4 @@ def receive(bt_addr):
     except:
         return 1
 
-print(receive("98:D3:61:FD:51:29"))
+#print(receive("98:D3:61:FD:51:29"))
