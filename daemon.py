@@ -2,7 +2,7 @@
 #Require rood permission
 import os, sys, time
 import arduino_nfc, totpauth, passwd
-#import gpiolock
+import gpiolock
 from evdev import InputDevice
 from select import select
 
@@ -39,7 +39,6 @@ def detectInputKey(count, show):
                     counta = counta - flag
                     if show:
                         sys.stdout.write('\r')
-                        #sys.stdout.write(str(key[event.code]))
                         sys.stdout.write(str(msg))
                         sys.stdout.flush()
                 if event.code == KEY_DEL:
@@ -54,17 +53,16 @@ def detectInputKey(count, show):
                 if (flag == 0 and event.code == KEY_ENTER) or (flag == 1 and counta == 0):
                     print('')
                     return msg
-                #print("Key: %s Status: %s" % (event.code, "pressed" if event.value else "release"))
 
 def open():
     if os.path.exists('status/bluetooth.txt'):
         print('ALL OK')
-        #gpiolock.unlock()
+        gpiolock.auto_unlock()
 
     else:
         if arduino_nfc.receive_auth_all('98:D3:21:FC:81:0F') >= 0:
             print('ALL OK')
-            #gpiolock.unlock()
+            gpiolock.auto_unlock()
 
 
 while True:
@@ -73,12 +71,20 @@ while True:
     ikey = detectInputKey(1, True)
     if ikey == '1':
         print('TOTP')
-        print('Input TOTP code:')
+        print('Input TOTP code: ')
         if totpauth.auth_all(detectInputKey(6, True)) >= 0:
             print('TOTP OK')
             open()
         else:
             print('TOTP ERR')
+    elif ikey == '2':
+        print('PASSWORD')
+        print('Input your passwd:')
+        if passwd.auth_all(detectInputKey(-1,False)) >= 0:
+            print('PASSWORD OK')
+            open()
+        else:
+            print('PASSWORD ERR')
     else:
         print('Please select again')
 

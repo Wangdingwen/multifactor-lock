@@ -1,11 +1,12 @@
 #Python3
-import os, time
+import time
 import arduino_nfc, blueclient, totpauth, passwd
 import gpiolock
 
 gpiolock.lock()
 while True:
-    #gpiolock.lock()
+    gpiolock.lock()
+    time.sleep(2)
     try:
         blue = blueclient.receive("98:D3:61:FD:51:29")
         if  blue == 'SJ3M4GZVCZTAOME7APZRPQOCQJ5VNZY4':
@@ -26,5 +27,4 @@ while True:
                 gpiolock.auto_lock()
                 continue
     except:
-        #time.sleep(2)
         continue

@@ -1,6 +1,5 @@
 import RPi.GPIO as GPIO
-import time, os
-from nfc import read_auth
+import time
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(37,GPIO.OUT)

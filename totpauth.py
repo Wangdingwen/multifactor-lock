@@ -1,4 +1,4 @@
-import os, sys, time
+import os
 import pyotp
 import qrcode_terminal
 

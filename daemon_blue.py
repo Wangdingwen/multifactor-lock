@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 import time
 import bluetooth, threading, socket
 import totpauth
