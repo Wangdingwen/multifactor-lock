@@ -23,6 +23,8 @@ def auth(id,data):
 
 def receive_auth_all(bt_addr):
     data = receive(bt_addr)
+    if data == -1:
+        return -1
     for i in range(1,len([name for name in os.listdir('nfc/') if os.path.isfile(os.path.join('nfc/', name))])):
         if auth(i,data) == 0:
             return i
